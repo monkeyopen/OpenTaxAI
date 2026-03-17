@@ -7,4 +7,7 @@
 实现了先进先出（FIFO）和移动加权平均价（MA）两种算法。
 需要在代码中切换。
 
+下面的计算很完善
+https://github.com/lilymoonight/stock_tax_calculator
+
 
