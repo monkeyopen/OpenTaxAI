@@ -1,0 +1,14 @@
+[project]
+name = "taxes"
+version = "0.1.0"
+description = "Local capital gains tax helper for brokerage trade records."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+  { name = "monkeyopen" }
+]
+
+[project.urls]
+Homepage = "https://github.com/monkeyopen/taxes"
+Issues = "https://github.com/monkeyopen/taxes/issues"

@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a calculation or parsing bug.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请不要上传真实交易记录。请先脱敏股票代码、时间、数量、金额、订单号和账户信息。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题描述
+      description: 说明你看到的错误结果或异常。
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: 脱敏样例
+      description: 提供可复现的最小输入和预期输出。
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: market
+    attributes:
+      label: 市场/券商
+      placeholder: 港股 / 美股 / 综合账户 / 券商名称
+  - type: input
+    id: method
+    attributes:
+      label: 计税口径
+      placeholder: FIFO / MA / 其他
+  - type: textarea
+    id: context
+    attributes:
+      label: 其他信息
+      description: Python 版本、运行命令、相关日志等。
