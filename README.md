@@ -1,33 +1,47 @@
-# taxes
+# OpenTaxAI
 
-`taxes` 是一个面向个人投资者的资本利得税计算辅助工具。它从券商导出的交易记录中读取港股、美股成交明细，按股票代码汇总买卖记录，并用先进先出（FIFO）或移动加权平均价（MA）计算指定纳税年度的已实现盈亏、交易费用和估算税费。
+Open-source AI-native tax automation platform.
 
-> 免责声明：本项目不是税务、法律或投资建议。不同税务居民身份、市场、券商记录格式和税法口径可能不同；正式申报前请自行复核或咨询专业人士。
+OpenTaxAI helps individuals and developers build transparent, programmable, and privacy-preserving tax workflows. The current implementation focuses on local capital gains calculation from brokerage trade records, with a roadmap toward AI-assisted tax automation, MCP integration, and agent-based workflows.
 
-## 项目价值
+> Disclaimer: OpenTaxAI is not tax, legal, or investment advice. Tax rules vary by jurisdiction, residency, year, broker, and filing context. Always review outputs before filing or consult a qualified professional.
 
-- 帮助普通投资者把券商导出的明细转换成可复核的资本利得计算过程。
-- 覆盖港股、美股和综合账户记录，支持多币种汇总。
-- 保留 FIFO 与移动加权平均两种常见成本口径，方便按申报要求或个人复核习惯切换。
-- 不上传交易数据，所有计算在本地完成，适合处理敏感财务记录。
+## Vision
 
-## 当前能力
+OpenTaxAI aims to make tax workflows transparent, programmable, and accessible through AI-powered automation.
 
-- 读取 UTF-16、制表符分隔的券商订单历史 CSV。
-- 过滤失败和已撤单记录。
-- 支持买入、卖出和美股卖空后的平仓计算。
-- 支持按起止日期筛选纳税年度。
-- 输出单只股票和整体的手续费、资本利得、估算税费。
+Tax preparation often depends on opaque spreadsheets, manual broker exports, and hard-to-review calculations. OpenTaxAI is designed to become open infrastructure for tax automation: local-first, auditable, extensible, and safe for sensitive financial data.
 
-## 快速开始
+## Features
 
-需要 Python 3.9 或更高版本，无第三方依赖。
+- Tax calculation workflows
+- Local capital gains calculation from brokerage trade records
+- FIFO and moving-average cost basis workflows
+- Hong Kong stock, US stock, and multi-currency trade record support
+- Privacy-first local execution for sensitive financial data
+- AI-assisted tax automation (planned)
+- MCP integration (planned)
+- Agent-based workflows (planned)
+- Open-source infrastructure for tax rule engines and filing assistants
+
+## Current Capabilities
+
+- Reads UTF-16, tab-separated brokerage order history exports.
+- Filters failed and cancelled orders.
+- Calculates realized gains and fees for a selected tax year.
+- Supports buy, sell, and short-selling close workflows.
+- Produces per-symbol and portfolio-level summaries.
+- Includes unit tests that use synthetic data only.
+
+## Quick Start
+
+OpenTaxAI currently requires Python 3.9 or higher and has no third-party runtime dependencies.
 
 ```bash
 python3 run.py
 ```
 
-默认脚本会读取以下本地文件：
+The legacy script expects local broker exports at:
 
 ```text
 data/订单历史-综合账户.csv
@@ -35,54 +49,65 @@ data/订单历史-港股融资融券.csv
 data/订单历史-美股融资融券.csv
 ```
 
-这些文件通常包含个人交易信息，仓库通过 `.gitignore` 忽略 `*.csv`，不要提交真实交易记录。
+These files usually contain personal financial information. The repository ignores `*.csv`; do not commit real trade records.
 
-## 数据格式
+## Tax Year
 
-脚本当前按券商导出的中文字段顺序解析，编码假设为 UTF-16，字段分隔符为制表符。若你的券商导出格式不同，请优先提交脱敏样例和字段说明。
-
-## 调整纳税年度
-
-在 `run.py` 末尾修改：
+Update the tax-year window in `run.py`:
 
 ```python
 start_time = "20250101"
 end_time = "20251231"
 ```
 
-## 切换计税口径
+## Cost Basis Method
 
-`tax_for_ganggu` 和 `tax_for_meigu` 中默认使用移动加权平均价：
+The current workflow defaults to moving average:
 
 ```python
 tax_data = MA(code_data, start_time, end_time)
 ```
 
-如需 FIFO，可改为：
+To use FIFO:
 
 ```python
 tax_data = FIFO(code_data, start_time, end_time)
 ```
 
-## 测试
+## Development
+
+Run tests:
 
 ```bash
 python3 -m unittest discover
 ```
 
-测试不读取真实 CSV，只覆盖解析、时间窗口和核心计税函数的最小行为。
+The test suite uses synthetic transactions only. It does not read broker CSV files.
 
-## 维护计划
+## Architecture
 
-短期优先级见 [ROADMAP.md](ROADMAP.md)。欢迎提交脱敏样例、格式兼容修复、计算口径说明和测试用例。
+See [docs/architecture.md](docs/architecture.md) for the current architecture and planned migration from a legacy script to modular OpenTaxAI components.
 
-## 贡献
+## Roadmap
 
-请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。涉及税务口径的改动必须说明适用地区、适用年份、参考依据和可复现样例。
+- [x] Initial architecture
+- [x] Local capital gains calculation workflow
+- [x] Synthetic unit tests and GitHub Actions CI
+- [ ] Tax rule engine
+- [ ] AI tax assistant
+- [ ] MCP server support
+- [ ] Agent-based workflow runner
+- [ ] Multi-country tax support
+- [ ] Automated testing for broker import formats
+- [ ] Report export for human review
 
-## 安全
+## Contributing
 
-不要在 issue、PR 或讨论中上传真实交易记录、账号、姓名、订单号或券商截图。安全问题请按 [SECURITY.md](SECURITY.md) 处理。
+Please read [CONTRIBUTING.md](CONTRIBUTING.md). Tax logic changes must include jurisdiction, tax year, method, references, anonymized samples, and tests.
+
+## Security and Privacy
+
+Do not upload real trade records, account names, order IDs, screenshots, or broker statements to issues or pull requests. Security concerns should follow [SECURITY.md](SECURITY.md).
 
 ## License
 

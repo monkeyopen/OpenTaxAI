@@ -1,15 +1,33 @@
-# Codex for Open Source 申请草稿
+# Codex for Open Source Application Draft
 
-申请页会审核项目使用情况、生态重要性和活跃维护证据，也会询问 API 额度如何用于 PR 审查、维护自动化、发布流程或其他核心 OSS 工作。
+## Project
 
-## 为什么这个代码仓库符合要求
+OpenTaxAI is an open-source AI-native tax automation platform. It starts with local capital gains calculation from brokerage trade records and is designed to grow into programmable infrastructure for tax rule engines, AI tax assistants, MCP integrations, and agent-based tax workflows.
 
-`taxes` 是一个本地运行的个人资本利得税计算辅助工具，帮助投资者把港股、美股券商导出的交易明细转换为可复核的 FIFO/移动加权平均成本计算过程。项目对处理敏感财务数据的人群有明确价值：无需上传交易记录，逻辑透明，可通过脱敏样例和测试持续改进。维护重点包括多券商格式兼容、税务口径说明、隐私保护和计算正确性。
+## Why this project matters
 
-## 如何针对项目使用 API 额度
+Tax workflows are often manual, spreadsheet-heavy, and difficult to audit. Individual investors also handle sensitive financial data that should not be uploaded to closed services without a clear reason. OpenTaxAI provides a local-first and transparent alternative: users can inspect the calculation logic, run it on their own machine, and contribute anonymized test cases for broker formats and tax-rule behavior.
 
-API 额度将用于核心维护工作：自动审查 PR 中的税务口径变更、检测真实交易信息泄露风险、根据脱敏样例生成回归测试、整理 issue 中的新券商字段映射、辅助发布前生成变更摘要。所有自动化只处理脱敏样例和公开代码，不上传真实交易记录。
+The current repository includes a working local capital gains workflow, MIT License, contribution guidelines, security policy, roadmap, GitHub issue/PR templates, CI, and synthetic unit tests.
 
-## 其他说明
+## How Codex/API credits would be used
 
-项目已补齐 MIT License、贡献指南、安全策略、路线图、CI 和不依赖真实交易数据的单元测试。后续会优先把解析层与计算层拆分，并增加脱敏样例，降低贡献门槛和审查成本。
+API credits would support core open-source maintenance:
+
+- Review PRs that modify tax calculation behavior.
+- Check issues and PRs for accidental disclosure of real trade records.
+- Generate regression tests from anonymized broker samples.
+- Draft parser mappings for new broker export formats.
+- Explain calculation traces in human-readable reports.
+- Build and test an MCP server for local tax workflows.
+- Prototype agent-based workflows for import, validation, calculation, and report generation.
+
+All automation should use public code and anonymized examples only. Real user trade records should stay local.
+
+## Repository description
+
+Open-source AI-native tax automation platform.
+
+## Suggested topics
+
+`ai`, `tax`, `automation`, `agent`, `mcp`, `open-source`, `python`, `fintech`

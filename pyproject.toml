@@ -1,7 +1,7 @@
 [project]
-name = "taxes"
+name = "opentaxai"
 version = "0.1.0"
-description = "Local capital gains tax helper for brokerage trade records."
+description = "Open-source AI-native tax automation platform."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
@@ -10,5 +10,5 @@ authors = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/monkeyopen/taxes"
-Issues = "https://github.com/monkeyopen/taxes/issues"
+Homepage = "https://github.com/monkeyopen/OpenTaxAI"
+Issues = "https://github.com/monkeyopen/OpenTaxAI/issues"

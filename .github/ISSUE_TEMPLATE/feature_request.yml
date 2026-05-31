@@ -1,5 +1,5 @@
 name: Feature request
-description: Request support for a broker format or tax-calculation behavior.
+description: Request support for a broker format, tax workflow, AI assistant, or MCP integration.
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
@@ -18,7 +18,7 @@ body:
     id: proposal
     attributes:
       label: 建议方案
-      description: 说明期望的输入、输出或计算口径。
+      description: 说明期望的输入、输出、计算口径或自动化 workflow。
     validations:
       required: true
   - type: textarea

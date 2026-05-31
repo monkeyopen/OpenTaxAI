@@ -6,6 +6,7 @@
 
 - [ ] Parser or broker format
 - [ ] Tax calculation logic
+- [ ] AI assistant / MCP / agent workflow
 - [ ] Documentation
 - [ ] Tests only
 

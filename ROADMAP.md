@@ -1,21 +1,33 @@
-# Roadmap
+# OpenTaxAI Roadmap
 
-## 近期
+## Done
 
-- 增加命令行参数，避免在代码中修改纳税年度、汇率和计税口径。
-- 为港股、美股、综合账户提供脱敏样例文件。
-- 拆分解析层和计算层，减少券商格式变化对核心算法的影响。
-- 补齐卖空、配股、新股申购、部分成交的测试。
+- [x] Initial architecture
+- [x] Local capital gains calculation workflow
+- [x] FIFO and moving-average calculation support
+- [x] Synthetic unit tests
+- [x] GitHub Actions CI
+- [x] Open-source governance docs
 
-## 中期
+## Near Term
 
-- 支持输出 CSV/Markdown 汇总报告，方便人工复核。
-- 增加多券商字段映射配置。
-- 增加汇率来源记录和手动汇率表。
-- 为常见税务口径写清适用范围和限制。
+- [ ] Command-line options for tax year, exchange rate, and cost basis method
+- [ ] Anonymized broker export samples
+- [ ] Parser layer separated from calculation logic
+- [ ] Tax rule engine interface
+- [ ] Report export for human review
+- [ ] More tests for short selling, stock splits, IPO allotments, and partial fills
 
-## 不做
+## AI-Native Roadmap
 
-- 不保存、上传或同步用户交易记录。
-- 不提供税务、法律或投资建议。
-- 不保证适用于所有税务居民身份或所有申报场景。
+- [ ] AI tax assistant for explaining calculations
+- [ ] MCP server support for local tax workflows
+- [ ] Agent-based workflows for importing, validating, calculating, and reporting
+- [ ] Privacy checks for accidental sensitive-data disclosure in issues and PRs
+- [ ] Multi-country tax workflow support
+
+## Non-Goals
+
+- OpenTaxAI does not store, upload, or synchronize user trade records.
+- OpenTaxAI does not provide tax, legal, or investment advice.
+- OpenTaxAI does not guarantee correctness for every jurisdiction, residency, broker, or filing scenario.
